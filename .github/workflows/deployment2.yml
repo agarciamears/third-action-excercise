@@ -1,0 +1,36 @@
+name: Demployment Excercise 1
+on: [push]
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm ci
+      - name: Lint
+        run: npm run lint
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm ci
+      - name: Test
+        run: npm test
+  deploy:
+      runs-on: ubuntu-latest
+      steps:
+          - name: Checkout
+            uses: actions/checkout@v3
+          - name: Install dependencies
+            run: npm ci
+          - name: Lint
+            run: npm run lint
+          - name: Test
+            run: npm test
+          - name: Build
+            run: npm run build
+          - name: Deploy Code
+            run: echo "Deploying....."

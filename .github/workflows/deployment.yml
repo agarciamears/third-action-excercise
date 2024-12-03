@@ -1,0 +1,27 @@
+name: Demployment Excercise 1
+on: [push]
+jobs:
+    #Nombre del job tu lo pones como quieras:
+    deploy:
+        #Asignano OS de Runner:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+            #Utilizando Action para obtener codigo, oficial (GitHub)
+              uses: actions/checkout@v3
+            - name: Install dependencies
+            #Ejecutando comando para instalar dependencias (En Shell)
+            #Siempre con "run"
+              run: npm ci
+            - name: Lint
+            #Ejecutando comando para Lint (En Shell)
+              run: npm run lint
+            - name: Test
+            #Ejecutando comando para Test (En Shell)
+              run: npm test
+            - name: Build
+            #Ejecutando comando para contruir el codigo (Build En Shell)
+              run: npm run build
+            - name: Deploy Code
+            #Ejecutando comando para desplegar el codigo (Deploy En Shell)
+              run: echo "Deploying....."
