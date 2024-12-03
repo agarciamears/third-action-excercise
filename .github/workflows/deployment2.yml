@@ -11,6 +11,8 @@ jobs:
       - name: Lint
         run: npm run lint
   test:
+     #Agregando secuencial "Despúes de Lint"
+    needs: lint
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -20,6 +22,8 @@ jobs:
       - name: Test
         run: npm test
   deploy:
+      #Agregando secuencial "Despúes de Test"
+      needs: test
       runs-on: ubuntu-latest
       steps:
           - name: Checkout
